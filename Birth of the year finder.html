@@ -1,0 +1,55 @@
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birth of the year finder</title>
+ </head>
+ <style>
+   .input-container{ 
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 50px;
+
+   }
+ #number{ 
+   font-size:20px;
+}
+ input::placeholder{ 
+   font-size: 10px;
+   font-style: italic;
+ }
+#button{
+   color: rgb(8, 8, 63);
+   background-color: blueviolet;
+   font-size: larger;
+}
+ </style>
+ <body>
+    <div class="input-container">
+      <Input type="number" placeholder="write your age here" id="number"></Input>
+      <input type="button" value="search" id="button">
+    </div>
+
+    <script type="text/javascript">
+      function calculate() {
+  var number = document.getElementById("number").value;
+  var date = new Date().getFullYear();
+
+  if (number === "" || number == 0) {
+    window.alert("Please type in a correct age");
+    return;
+  }
+var newAge= date-number
+document.write( "Your year of birth is "+ newAge)
+
+}
+
+// Make sure to use quotes for the button's ID
+document.getElementById("button").onclick = function() {
+  calculate();
+};
+
+    </script>
+ </body>
+ </html>
