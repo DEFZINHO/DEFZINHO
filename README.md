@@ -1,5 +1,5 @@
 ## Hi there 👋
-I am Francis Fekz, Welcome to my repository
+I am Francis Fekz, Welcome to my repository.
 🌱 I’m currently learning Front-end and Back-end web development
 <!--
 **DEFZINHO/DEFZINHO** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
