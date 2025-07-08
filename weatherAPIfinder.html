@@ -1,0 +1,81 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>weather finder</title>
+</head>
+<style>
+    h1{
+        color: blue;
+    }
+    body{
+        background-color: lightcyan;
+    }
+
+    .value-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 50px;
+    }
+    #city {
+        font-size: 20px;
+        padding: 10px;
+        width: 300px;
+        border: 2px solid #ccc;
+        border-radius: 5px;
+    }
+    #search-button {
+        font-size: 20px;
+        padding: 10px 20px;
+        margin-left: 10px;
+        background-color: blueviolet;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    #result {
+        text-align: center;
+        margin-top: 20px;
+    }
+    input::placeholder {
+        font-size: 20px;
+        font-style: italic;
+    }
+</style>
+<body>
+    <H1>This app helps you find the weather of your city</H1>
+    <div class="value-container">
+        <input type="text" id="city" placeholder="Enter your city name">
+        <button id="search-button">Search</button>
+    </div>
+    <div id="result">
+        <!-- Weather data will be displayed here -->
+         <p id="paragraph"> weather will be displayed here </p>
+    </div>
+    <script type="text/javascript">
+        document.getElementById("paragraph").style.display = "none";
+        document.getElementById("search-button").onclick = function() {
+            var city = document.getElementById("city").value;
+            if (city === "") {
+                window.alert("Please enter a city name");
+                return;
+            }
+            fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=YOUR_API_KEY&units=metric`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.cod === 200) {
+                        document.getElementById("paragraph").style.display = "block";
+                        document.getElementById("paragraph").innerHTML = `The weather in ${data.name} is ${data.weather[0].description} with a temperature of ${data.main.temp}°C.`;
+                    } else {
+                        window.alert("City not found, please try again.");
+                    }
+                })
+                .catch(error => {
+                    console.error("Error fetching the weather data:", error);
+                });
+        };
+    </script>
+</body>
+</html>
